@@ -3447,15 +3447,8 @@ input, select, textarea {
 		position: absolute;
 	}
 
-	/****/
+	/*******************/
 	
-	
-	.color-text-flow,
-	.color-text-flow-hover:hover {
-	  /*
-	   * Elements settings
-	   */
-	}
 	.color-text-flow span,
 	.color-text-flow-hover:hover span {
 	  -webkit-animation-name: color-text-flow-keys;

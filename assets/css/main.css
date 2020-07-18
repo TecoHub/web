@@ -125,9 +125,14 @@ input, select, textarea {
 		font-style: italic;
 	}
 
-	p {
-		margin: 0 0 2em 0;
-	}
+	
+    p {
+			color: #ffffff;
+			position: relative;
+			margin: 0 0 1.5em 0;
+			text-align: justify;
+		}
+	
 
 	h1, h2, h3, h4, h5, h6 {
 		color: #ffffff;
@@ -3447,7 +3452,7 @@ input, select, textarea {
 		position: absolute;
 	}
 
-	/*******************/
+	/******** Title animation***********/
 	
 	.color-text-flow span,
 	.color-text-flow-hover:hover span {

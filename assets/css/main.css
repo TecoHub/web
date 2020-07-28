@@ -2876,6 +2876,12 @@ input, select, textarea {
 		.button:active {
 			box-shadow: inset 0 0 0 1px #39c088;
 			color: #39c088 !important;
+		} 
+
+		.btn3:hover, 
+		.button:active {
+			box-shadow: inset 0 0 0 1px #FECA9C;
+			color: #FEE97D !important;
 		}
 		
 		
@@ -4120,7 +4126,7 @@ input, select, textarea {
 	#banner {
 		background-attachment: fixed;
 		background-color: #272833;
-		background-image: url("../../images/banner.jpg");
+		background-image: url("../../images/planets2.jpeg");
 		background-position: center center;
 		background-size: cover;
 		box-shadow: 0 0.25em 0.5em 0 rgba(0, 0, 0, 0.25);

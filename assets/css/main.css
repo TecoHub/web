@@ -4786,36 +4786,3 @@ input, select, textarea {
 
 
 /***************************************************************************/
-
-.grid02 {
-	display: grid;
-	column-gap: 50px;
-	grid-template-columns: auto auto auto;
-	background-color: #2196F3;
-	padding: 10px;
-  }
-  
-  .itemgrip {
-	background-color: rgba(255, 255, 255, 0.8);
-	border: 8px solid rgba(0, 0, 0, 0.8);
-	padding: 20px;
-	font-size: 30px;
-	text-align: center;
-  }
-
-/*.grid02 {
-	display: grid;
-	grid-column-gap: 80px;
-    grid-template-columns: auto, auto, auto;
-	background-color: #685cd6;
-	padding: 30px;
-}
-
-
-.itemgrip {
-	border: 1px solid white;
-background-color: white;
-text-align: center;
-padding: 40px;
-text-align: center;
-}*/

@@ -2421,6 +2421,7 @@ input, select, textarea {
 		text-decoration: none;
 		border-bottom: none;
 		position: relative;
+		padding: 11px;
 	}
 
 		.icon:before {
@@ -2632,6 +2633,10 @@ input, select, textarea {
 				ul.icons li .icon:before {
 					font-size: 2em;
 				}
+
+	#powered {
+		border-radius: 5px;
+	}			
 
 /* Actions */
 
@@ -4786,3 +4791,7 @@ input, select, textarea {
 
 
 /***************************************************************************/
+#text {
+	font-size: 30px;
+	
+  }

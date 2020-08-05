@@ -40,7 +40,7 @@
 							<li><a href="projects.html"> Projects </a></li>
 							<li><a href="tools.html">Tools</a></li>
 							<li><a href="#one">About</a></li>
-							<li><a href="#" class="button primary">Contact</a></li>
+							<li><a href="mailto:elmehdimadih@yahoo.com" class="button primary">Contact</a></li>
 						</ul>
 					</nav>
 				</header>
@@ -72,114 +72,114 @@
 										 given to those whose value is higher than thirty points. Players who reach a score of forty or higher receive a platinum medal.</p>
 									<h3>HTML Code</h3>
 
-	<pre><code>
-	&lt;!DOCTYPE html&gt;<br>
-	&lt;html&gt;<br>
-	&nbsp; &lt;head&gt;<br>
-	&nbsp; &nbsp; &lt;title&gt; TecoHub | Flappy Bird using JS &lt;/title&gt;<br>
-	&nbsp; &lt;/head&gt;<br>
-	&nbsp; &lt;body&gt;<br>
-	&nbsp; &nbsp;&lt;h3&gt;FlappyBird by TecoHub&lt;/h3&gt;<br>
-	&nbsp; <br>
-	&nbsp; &nbsp;&lt;canvas id="canvas" width="288" height="512"&gt;&lt;/canvas&gt;<br>
-	&nbsp; <br>
-	&nbsp; &nbsp;&lt;script src="flappyBird.js"&gt;&lt;/script&gt;<br>
-	&nbsp; &lt;/body&gt;<br>
-	&lt;/html&gt;
-	</code></pre>
+<pre><code>
+&lt;!DOCTYPE html&gt;<br>
+&lt;html&gt;<br>
+&nbsp; &lt;head&gt;<br>
+&nbsp; &nbsp; &lt;title&gt; TecoHub | Flappy Bird using JS &lt;/title&gt;<br>
+&nbsp; &lt;/head&gt;<br>
+&nbsp; &lt;body&gt;<br>
+&nbsp; &nbsp;&lt;h3&gt;FlappyBird by TecoHub&lt;/h3&gt;<br>
+&nbsp; <br>
+&nbsp; &nbsp;&lt;canvas id="canvas" width="288" height="512"&gt;&lt;/canvas&gt;<br>
+&nbsp; <br>
+&nbsp; &nbsp;&lt;script src="flappyBird.js"&gt;&lt;/script&gt;<br>
+&nbsp; &lt;/body&gt;<br>
+&lt;/html&gt;
+</code></pre>
 
 	                                <h3>JavaScript Code</h3>
-	<pre><code>
-	var cvs = document.getElementById("canvas");<br>
-	var ctx = cvs.getContext("2d");<br>
-	// load images<br>
-	var bird = new Image();<br>
-	var bg = new Image();<br>
-	var fg = new Image();<br>
-	var pipeNorth = new Image();<br>
-	var pipeSouth = new Image();<br>
-	bird.src = "images/bird.png";<br>
-	bg.src = "images/bg.png";<br>
-	fg.src = "images/fg.png";<br>
-	pipeNorth.src = "images/pipeNorth.png";<br>
-	pipeSouth.src = "images/pipeSouth.png";<br>
-	<br>
-	// some variables<br>
-	var gap = 85;<br>
-	var constant;<br>
-	var bX = 10;<br>
-	var bY = 150;<br>
-	var gravity = 1.5;<br>
-	var score = 0;<br>
-	// audio files<br>
-	var fly = new Audio();<br>
-	var scor = new Audio();<br>
-	fly.src = "sounds/fly.mp3";<br>
-	scor.src = "sounds/score.mp3";<br>
-	// on key down<br>
-	document.addEventListener("keydown",moveUp);<br>
-	function moveUp(){<br>
-	&nbsp; &nbsp; bY -= 25;<br>
-	&nbsp; &nbsp; fly.play();<br>
-	}<br>
-	// pipe coordinates<br>
-	var pipe = [];<br>
-	pipe[0] = {<br>
-	&nbsp; &nbsp; x : cvs.width,<br>
-	&nbsp; &nbsp; y : 0<br>
-	};<br>
-	// draw images<br>
-	function draw(){<br>
-	&nbsp; <br>
-	&nbsp; &nbsp; ctx.drawImage(bg,0,0);<br>
-	&nbsp; <br>
-	&nbsp; <br>
-	&nbsp; &nbsp; for(var i = 0; i &lt; pipe.length; i++){<br>
-	&nbsp; &nbsp; &nbsp; <br>
-	&nbsp; &nbsp; &nbsp; &nbsp; constant = pipeNorth.height+gap;<br>
-	&nbsp; &nbsp; &nbsp; &nbsp; ctx.drawImage(pipeNorth,pipe[i].x,pipe[i].y);<br>
-	&nbsp; &nbsp; &nbsp; &nbsp; ctx.drawImage(pipeSouth,pipe[i].x,pipe[i].y+constant);<br>
-	&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <br>
-	&nbsp; &nbsp; &nbsp; &nbsp; pipe[i].x--;<br>
-	&nbsp; &nbsp; &nbsp; <br>
-	&nbsp; &nbsp; &nbsp; &nbsp; if( pipe[i].x == 125 ){<br>
-	&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; pipe.push({<br>
-	&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; x : cvs.width,<br>
-	&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; y : Math.floor(Math.random()*pipeNorth.height)-pipeNorth.height<br>
-	&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; });<br>
-	&nbsp; &nbsp; &nbsp; &nbsp; }<br>
-	&nbsp; &nbsp; &nbsp; &nbsp; // detect collision<br>
-	&nbsp; &nbsp; &nbsp; <br>
-	&nbsp; &nbsp; &nbsp; &nbsp; if( bX + bird.width &gt;= pipe[i].x &amp;&amp; bX &lt;= pipe[i].x + pipeNorth.width &amp;&amp; (bY &lt;= pipe[i].y + pipeNorth.height || bY+bird.height &gt;= pipe[i].y+constant) || bY + bird.height &gt;=&nbsp; cvs.height - fg.height){<br>
-	&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; location.reload(); // reload the page<br>
-	&nbsp; &nbsp; &nbsp; &nbsp; }<br>
-	&nbsp; &nbsp; &nbsp; <br>
-	&nbsp; &nbsp; &nbsp; &nbsp; if(pipe[i].x == 5){<br>
-	&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; score++;<br>
-	&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; scor.play();<br>
-	&nbsp; &nbsp; &nbsp; &nbsp; }<br>
-	&nbsp; &nbsp; &nbsp; <br>
-	&nbsp; &nbsp; &nbsp; <br>
-	&nbsp; &nbsp; }<br>
-	&nbsp; &nbsp; ctx.drawImage(fg,0,cvs.height - fg.height);<br>
-	&nbsp; <br>
-	&nbsp; &nbsp; ctx.drawImage(bird,bX,bY);<br>
-	&nbsp; <br>
-	&nbsp; &nbsp; bY += gravity;<br>
-	&nbsp; <br>
-	&nbsp; &nbsp; ctx.fillStyle = "#000";<br>
-	&nbsp; &nbsp; ctx.font = "20px Verdana";<br>
-	&nbsp; &nbsp; ctx.fillText("Score : "+score,10,cvs.height-20);<br>
-	&nbsp; <br>
-	&nbsp; &nbsp; requestAnimationFrame(draw);<br>
-	&nbsp; <br>
-	}<br>
-	draw();
-	</code></pre>
+<pre><code>
+var cvs = document.getElementById("canvas");<br>
+var ctx = cvs.getContext("2d");<br>
+// load images<br>
+var bird = new Image();<br>
+var bg = new Image();<br>
+var fg = new Image();<br>
+var pipeNorth = new Image();<br>
+var pipeSouth = new Image();<br>
+bird.src = "images/bird.png";<br>
+bg.src = "images/bg.png";<br>
+fg.src = "images/fg.png";<br>
+pipeNorth.src = "images/pipeNorth.png";<br>
+pipeSouth.src = "images/pipeSouth.png";<br>
+<br>
+// some variables<br>
+var gap = 85;<br>
+var constant;<br>
+var bX = 10;<br>
+var bY = 150;<br>
+var gravity = 1.5;<br>
+var score = 0;<br>
+// audio files<br>
+var fly = new Audio();<br>
+var scor = new Audio();<br>
+fly.src = "sounds/fly.mp3";<br>
+scor.src = "sounds/score.mp3";<br>
+// on key down<br>
+document.addEventListener("keydown",moveUp);<br>
+function moveUp(){<br>
+&nbsp; &nbsp; bY -= 25;<br>
+&nbsp; &nbsp; fly.play();<br>
+}<br>
+// pipe coordinates<br>
+var pipe = [];<br>
+pipe[0] = {<br>
+&nbsp; &nbsp; x : cvs.width,<br>
+&nbsp; &nbsp; y : 0<br>
+};<br>
+// draw images<br>
+function draw(){<br>
+&nbsp; <br>
+&nbsp; &nbsp; ctx.drawImage(bg,0,0);<br>
+&nbsp; <br>
+&nbsp; <br>
+&nbsp; &nbsp; for(var i = 0; i &lt; pipe.length; i++){<br>
+&nbsp; &nbsp; &nbsp; <br>
+&nbsp; &nbsp; &nbsp; &nbsp; constant = pipeNorth.height+gap;<br>
+&nbsp; &nbsp; &nbsp; &nbsp; ctx.drawImage(pipeNorth,pipe[i].x,pipe[i].y);<br>
+&nbsp; &nbsp; &nbsp; &nbsp; ctx.drawImage(pipeSouth,pipe[i].x,pipe[i].y+constant);<br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <br>
+&nbsp; &nbsp; &nbsp; &nbsp; pipe[i].x--;<br>
+&nbsp; &nbsp; &nbsp; <br>
+&nbsp; &nbsp; &nbsp; &nbsp; if( pipe[i].x == 125 ){<br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; pipe.push({<br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; x : cvs.width,<br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; y : Math.floor(Math.random()*pipeNorth.height)-pipeNorth.height<br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; });<br>
+&nbsp; &nbsp; &nbsp; &nbsp; }<br>
+&nbsp; &nbsp; &nbsp; &nbsp; // detect collision<br>
+&nbsp; &nbsp; &nbsp; <br>
+&nbsp; &nbsp; &nbsp; &nbsp; if( bX + bird.width &gt;= pipe[i].x &amp;&amp; bX &lt;= pipe[i].x + pipeNorth.width &amp;&amp; (bY &lt;= pipe[i].y + pipeNorth.height || bY+bird.height &gt;= pipe[i].y+constant) || bY + bird.height &gt;=&nbsp; cvs.height - fg.height){<br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; location.reload(); // reload the page<br>
+&nbsp; &nbsp; &nbsp; &nbsp; }<br>
+&nbsp; &nbsp; &nbsp; <br>
+&nbsp; &nbsp; &nbsp; &nbsp; if(pipe[i].x == 5){<br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; score++;<br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; scor.play();<br>
+&nbsp; &nbsp; &nbsp; &nbsp; }<br>
+&nbsp; &nbsp; &nbsp; <br>
+&nbsp; &nbsp; &nbsp; <br>
+&nbsp; &nbsp; }<br>
+&nbsp; &nbsp; ctx.drawImage(fg,0,cvs.height - fg.height);<br>
+&nbsp; <br>
+&nbsp; &nbsp; ctx.drawImage(bird,bX,bY);<br>
+&nbsp; <br>
+&nbsp; &nbsp; bY += gravity;<br>
+&nbsp; <br>
+&nbsp; &nbsp; ctx.fillStyle = "#000";<br>
+&nbsp; &nbsp; ctx.font = "20px Verdana";<br>
+&nbsp; &nbsp; ctx.fillText("Score : "+score,10,cvs.height-20);<br>
+&nbsp; <br>
+&nbsp; &nbsp; requestAnimationFrame(draw);<br>
+&nbsp; <br>
+}<br>
+draw();
+</code></pre>
 
 								<footer>
 									<ul class="actions">
-										<li><a href="Tech-content/images&music.rar" class="button" download>Download Images & Sounds</a></li> 
+										<li><a href="Tech-content/images&music.rar" class="button icon solid fa-download" download>Download Images & Sounds</a></li> 
 										<li><a href="Tech-content/flappy/index.html" class="button" target="_blank"> Live Demo</a></li>
 									</ul>
 								</footer>
@@ -190,8 +190,10 @@
 
 							<!-- Sidebar -->
 								<section id="sidebar">
+
 									<section>
-										<h3>Another article here</h3>
+										<a href="#" class="image fit"><img src="images/pic07.jpg" alt="" /></a>
+										<h3>Working on it</h3>
 										<p>Sed tristique purus vitae volutpat commodo suscipit amet sed nibh. Proin a ullamcorper sed blandit. Sed tristique purus vitae volutpat commodo suscipit ullamcorper commodo suscipit amet sed nibh. Proin a ullamcorper sed blandit..</p>
 										<footer>
 											<ul class="actions">
@@ -200,9 +202,10 @@
 										</footer>
 									</section>
 									<hr />
+
 									<section>
 										<a href="#" class="image fit"><img src="images/pic07.jpg" alt="" /></a>
-										<h3>Amet Lorem Tempus</h3>
+										<h3>Working on it</h3>
 										<p>Sed tristique purus vitae volutpat commodo suscipit amet sed nibh. Proin a ullamcorper sed blandit. Sed tristique purus vitae volutpat commodo suscipit ullamcorper sed blandit lorem ipsum dolore.</p>
 										<footer>
 											<ul class="actions">
@@ -210,6 +213,7 @@
 											</ul>
 										</footer>
 									</section>
+
 								</section>
 
 						</div>

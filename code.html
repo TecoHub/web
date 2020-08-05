@@ -57,7 +57,7 @@
 
 							<!-- Content -->
 								<section id="content">
-									<a href="#" class="image fit"><img src="images/pic06.jpg" alt="" /></a>
+									<a href="#" class="image fit"><img src="images/flappyanime.jpg" alt="" /></a>
 									<h2>Flappy Bird Game Using JavaScript and HTML5</h2>
 									<h3>Understanding JavaScript</h3>
 									<p>JavaScript is one of the most widely used programming languages in the past twenty years. JavaScript programming can be learned quickly and easily,
@@ -70,13 +70,120 @@
 										 due to gravity. Each pair of pipes he navigates yields one player point, with a medal awarded for a score at the end of the match. No medals are awarded for 
 										 scores less than ten. Bronze medals are awarded for scores between ten and twenty. To receive a silver medal, players must reach 20 points. Gold medals are 
 										 given to those whose value is higher than thirty points. Players who reach a score of forty or higher receive a platinum medal.</p>
-									<h3>Code</h3>
-									<footer>
-										<ul class="actions">
-											<li><a href="#" class="button">Download</a></li>
-										</ul>
-									</footer>
-								</section>
+									<h3>HTML Code</h3>
+
+	<pre><code>
+	&lt;!DOCTYPE html&gt;<br>
+	&lt;html&gt;<br>
+	&nbsp; &lt;head&gt;<br>
+	&nbsp; &nbsp; &lt;title&gt; TecoHub | Flappy Bird using JS &lt;/title&gt;<br>
+	&nbsp; &lt;/head&gt;<br>
+	&nbsp; &lt;body&gt;<br>
+	&nbsp; &nbsp;&lt;h3&gt;FlappyBird by TecoHub&lt;/h3&gt;<br>
+	&nbsp; <br>
+	&nbsp; &nbsp;&lt;canvas id="canvas" width="288" height="512"&gt;&lt;/canvas&gt;<br>
+	&nbsp; <br>
+	&nbsp; &nbsp;&lt;script src="flappyBird.js"&gt;&lt;/script&gt;<br>
+	&nbsp; &lt;/body&gt;<br>
+	&lt;/html&gt;
+	</code></pre>
+
+	                                <h3>JavaScript Code</h3>
+	<pre><code>
+	var cvs = document.getElementById("canvas");<br>
+	var ctx = cvs.getContext("2d");<br>
+	// load images<br>
+	var bird = new Image();<br>
+	var bg = new Image();<br>
+	var fg = new Image();<br>
+	var pipeNorth = new Image();<br>
+	var pipeSouth = new Image();<br>
+	bird.src = "images/bird.png";<br>
+	bg.src = "images/bg.png";<br>
+	fg.src = "images/fg.png";<br>
+	pipeNorth.src = "images/pipeNorth.png";<br>
+	pipeSouth.src = "images/pipeSouth.png";<br>
+	<br>
+	// some variables<br>
+	var gap = 85;<br>
+	var constant;<br>
+	var bX = 10;<br>
+	var bY = 150;<br>
+	var gravity = 1.5;<br>
+	var score = 0;<br>
+	// audio files<br>
+	var fly = new Audio();<br>
+	var scor = new Audio();<br>
+	fly.src = "sounds/fly.mp3";<br>
+	scor.src = "sounds/score.mp3";<br>
+	// on key down<br>
+	document.addEventListener("keydown",moveUp);<br>
+	function moveUp(){<br>
+	&nbsp; &nbsp; bY -= 25;<br>
+	&nbsp; &nbsp; fly.play();<br>
+	}<br>
+	// pipe coordinates<br>
+	var pipe = [];<br>
+	pipe[0] = {<br>
+	&nbsp; &nbsp; x : cvs.width,<br>
+	&nbsp; &nbsp; y : 0<br>
+	};<br>
+	// draw images<br>
+	function draw(){<br>
+	&nbsp; <br>
+	&nbsp; &nbsp; ctx.drawImage(bg,0,0);<br>
+	&nbsp; <br>
+	&nbsp; <br>
+	&nbsp; &nbsp; for(var i = 0; i &lt; pipe.length; i++){<br>
+	&nbsp; &nbsp; &nbsp; <br>
+	&nbsp; &nbsp; &nbsp; &nbsp; constant = pipeNorth.height+gap;<br>
+	&nbsp; &nbsp; &nbsp; &nbsp; ctx.drawImage(pipeNorth,pipe[i].x,pipe[i].y);<br>
+	&nbsp; &nbsp; &nbsp; &nbsp; ctx.drawImage(pipeSouth,pipe[i].x,pipe[i].y+constant);<br>
+	&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <br>
+	&nbsp; &nbsp; &nbsp; &nbsp; pipe[i].x--;<br>
+	&nbsp; &nbsp; &nbsp; <br>
+	&nbsp; &nbsp; &nbsp; &nbsp; if( pipe[i].x == 125 ){<br>
+	&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; pipe.push({<br>
+	&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; x : cvs.width,<br>
+	&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; y : Math.floor(Math.random()*pipeNorth.height)-pipeNorth.height<br>
+	&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; });<br>
+	&nbsp; &nbsp; &nbsp; &nbsp; }<br>
+	&nbsp; &nbsp; &nbsp; &nbsp; // detect collision<br>
+	&nbsp; &nbsp; &nbsp; <br>
+	&nbsp; &nbsp; &nbsp; &nbsp; if( bX + bird.width &gt;= pipe[i].x &amp;&amp; bX &lt;= pipe[i].x + pipeNorth.width &amp;&amp; (bY &lt;= pipe[i].y + pipeNorth.height || bY+bird.height &gt;= pipe[i].y+constant) || bY + bird.height &gt;=&nbsp; cvs.height - fg.height){<br>
+	&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; location.reload(); // reload the page<br>
+	&nbsp; &nbsp; &nbsp; &nbsp; }<br>
+	&nbsp; &nbsp; &nbsp; <br>
+	&nbsp; &nbsp; &nbsp; &nbsp; if(pipe[i].x == 5){<br>
+	&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; score++;<br>
+	&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; scor.play();<br>
+	&nbsp; &nbsp; &nbsp; &nbsp; }<br>
+	&nbsp; &nbsp; &nbsp; <br>
+	&nbsp; &nbsp; &nbsp; <br>
+	&nbsp; &nbsp; }<br>
+	&nbsp; &nbsp; ctx.drawImage(fg,0,cvs.height - fg.height);<br>
+	&nbsp; <br>
+	&nbsp; &nbsp; ctx.drawImage(bird,bX,bY);<br>
+	&nbsp; <br>
+	&nbsp; &nbsp; bY += gravity;<br>
+	&nbsp; <br>
+	&nbsp; &nbsp; ctx.fillStyle = "#000";<br>
+	&nbsp; &nbsp; ctx.font = "20px Verdana";<br>
+	&nbsp; &nbsp; ctx.fillText("Score : "+score,10,cvs.height-20);<br>
+	&nbsp; <br>
+	&nbsp; &nbsp; requestAnimationFrame(draw);<br>
+	&nbsp; <br>
+	}<br>
+	draw();
+	</code></pre>
+
+								<footer>
+									<ul class="actions">
+										<li><a href="Tech-content/images&music.rar" class="button" download>Download Images & Sounds</a></li> 
+										<li><a href="Tech-content/flappy/index.html" class="button" target="_blank"> Live Demo</a></li>
+									</ul>
+								</footer>
+							</section>
 
 						</div>
 						<div class="col-4 col-12-medium">
@@ -110,18 +217,39 @@
 				</div>
 			</div>
 
+			<!-- Five -->
+			<section id="five" class="wrapper style2 special fade">
+				<div class="container">
+					<header>
+						<h2>Would you like to take part in an exciting and important research Project related to technology? <br>
+						<span style="color: rgb(212, 144, 144);"> Drop your email address here</span> </h2>
+					</header>
+					<form method="post" action="#" class="cta">
+						<div class="row gtr-uniform gtr-50">
+							<div class="col-8 col-12-xsmall"><input type="email" name="email" id="email" placeholder="Your Email Address" /></div>
+							<div class="col-4 col-12-xsmall"><input type="submit" value="Get Started" class="fit primary" /></div>
+						</div>
+					</form>
+				</div>
+			</section>
+
 		<!-- Footer -->
 			<footer id="footer">
 				<ul class="icons">
-					<li><a href="#" class="icon brands alt fa-twitter"><span class="label">Twitter</span></a></li>
 					<li><a href="#" class="icon brands alt fa-facebook-f"><span class="label">Facebook</span></a></li>
-					<li><a href="#" class="icon brands alt fa-linkedin-in"><span class="label">LinkedIn</span></a></li>
-					<li><a href="#" class="icon brands alt fa-instagram"><span class="label">Instagram</span></a></li>
-					<li><a href="#" class="icon brands alt fa-github"><span class="label">GitHub</span></a></li>
-					<li><a href="#" class="icon solid alt fa-envelope"><span class="label">Email</span></a></li>
+					<li><a href="https://www.instagram.com/teco.hub/" class="icon brands alt fa-instagram"><span class="label">Instagram</span></a></li>
+					<li><a href="https://github.com/TecoHub" class="icon brands alt fa-github"><span class="label">GitHub</span></a></li>
+					<li><a href="mailto:elmehdimadih@yahoo.com" class="icon solid alt fa-envelope"><span class="label">Email</span></a></li>
+				</ul>
+				<ul> 
+					<img src="images/netflify.jpeg" id="powered" alt="image"> 
+					<img src="images/slack.jpeg" id="powered" alt="image">
+					<img src="images/github.jpeg" id="powered" alt="image">
+					<img src="images/torbrowser.jpeg" id="powered" alt="image">
+					<img src="images/codepen.jpeg" id="powered" alt="image">
 				</ul>
 				<ul class="copyright">
-					<li>&copy; Untitled. All rights reserved.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+					<li> &copy; <script type="text/javascript">	document.write(new Date().getFullYear());</script> &nbsp; • &nbsp;  TecoHub,  All Rights Reserved</li><li>Design: <a href="https://www.instagram.com/teco.hub/">MADIH EL MEHDI</a></li>
 				</ul>
 			</footer>
 

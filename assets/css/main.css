@@ -2967,7 +2967,7 @@ input, select, textarea {
 
 	.goto-next {
 		border: 0;
-		bottom: 0;
+		bottom: 10px;
 		display: block;
 		height: 5em;
 		left: 50%;

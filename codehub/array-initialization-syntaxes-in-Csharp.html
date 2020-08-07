@@ -2,7 +2,7 @@
 
 <html lang="en">
 	<head>
-		<title>TecoHub | Code</title>
+		<title>TecoHub | The beauty of JavaScript</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<meta keywords="TecoHub, tech, code, AI, aritificial inteligence, programming, coding, earn, " />
@@ -26,20 +26,20 @@
 
 			<!-- Header -->
 				<header id="header">
-					<h1 id="logo"><a href="index.html"> TecoHub </a></h1>
+					<h1 id="logo"><a href="../index.html"> TecoHub </a></h1>
 					<nav id="nav">
 						<ul>
-							<li><a href="index.html">Home</a></li>
+							<li><a href="../index.html">Home</a></li>
 							<li>
 								<a href="#">Articles</a>
 								<ul>
-									<li><a href="code.html">Code Hub</a></li>
-									<li><a href="tech.html">Tech Hub</a></li>
+									<li><a href="../code.html">Code Hub</a></li>
+									<li><a href="../tech.html">Tech Hub</a></li>
 								</ul>
 							</li>
-							<li><a href="projects.html"> Projects </a></li>
-							<li><a href="tools.html">Tools</a></li>
-							<li><a href="#one">About</a></li>
+							<li><a href="../projects.html"> Projects </a></li>
+							<li><a href="../tools.html">Tools</a></li>
+							<li><a href="../index.html#one">About</a></li>
 							<li><a href="mailto:elmehdimadih@yahoo.com" class="button primary">Contact</a></li>
 						</ul>
 					</nav>
@@ -57,8 +57,8 @@
 
 							<!-- Content -->
 								<section id="content">
-									<a href="#" class="image fit"><img src="images/javascript.jpeg" alt="" /></a>
-									<h2>Flappy Bird Game Using JavaScript and HTML5</h2>
+									<a href="#" class="image fit"><img src="images/Csharp.jpeg" alt="" /></a>
+									<h2>Array initislization syntaxes in C#</h2>
 									<h3>Understanding JavaScript</h3>
 									<p>Being the programming language of the web, JavaScript is one of the most widely used programming languages in the past 20 years. JS programming can be learned quickly,
 										 and it can be used for various purposes, for example from increasing the functionality of a site to creating game applications and web-based applications.
@@ -72,110 +72,9 @@
 										 given to those whose value is higher than thirty points. Players who reach a score of forty or higher receive a platinum medal.</p>
 									<h3>HTML Code</h3>
 
-<pre><code>
-&lt;!DOCTYPE html&gt;<br>
-&lt;html&gt;<br>
-&nbsp; &lt;head&gt;<br>
-&nbsp; &nbsp; &lt;title&gt; TecoHub | Flappy Bird using JS &lt;/title&gt;<br>
-&nbsp; &lt;/head&gt;<br>
-&nbsp; &lt;body&gt;<br>
-&nbsp; &nbsp;&lt;h3&gt;FlappyBird by TecoHub&lt;/h3&gt;<br>
-&nbsp; <br>
-&nbsp; &nbsp;&lt;canvas id="canvas" width="288" height="512"&gt;&lt;/canvas&gt;<br>
-&nbsp; <br>
-&nbsp; &nbsp;&lt;script src="flappyBird.js"&gt;&lt;/script&gt;<br>
-&nbsp; &lt;/body&gt;<br>
-&lt;/html&gt;
-</code></pre>
 
 	                                <h3>JavaScript Code</h3>
-<pre><code>
-var cvs = document.getElementById("canvas");<br>
-var ctx = cvs.getContext("2d");<br>
-// load images<br>
-var bird = new Image();<br>
-var bg = new Image();<br>
-var fg = new Image();<br>
-var pipeNorth = new Image();<br>
-var pipeSouth = new Image();<br>
-bird.src = "images/bird.png";<br>
-bg.src = "images/bg.png";<br>
-fg.src = "images/fg.png";<br>
-pipeNorth.src = "images/pipeNorth.png";<br>
-pipeSouth.src = "images/pipeSouth.png";<br>
-<br>
-// some variables<br>
-var gap = 85;<br>
-var constant;<br>
-var bX = 10;<br>
-var bY = 150;<br>
-var gravity = 1.5;<br>
-var score = 0;<br>
-// audio files<br>
-var fly = new Audio();<br>
-var scor = new Audio();<br>
-fly.src = "sounds/fly.mp3";<br>
-scor.src = "sounds/score.mp3";<br>
-// on key down<br>
-document.addEventListener("keydown",moveUp);<br>
-function moveUp(){<br>
-&nbsp; &nbsp; bY -= 25;<br>
-&nbsp; &nbsp; fly.play();<br>
-}<br>
-// pipe coordinates<br>
-var pipe = [];<br>
-pipe[0] = {<br>
-&nbsp; &nbsp; x : cvs.width,<br>
-&nbsp; &nbsp; y : 0<br>
-};<br>
-// draw images<br>
-function draw(){<br>
-&nbsp; <br>
-&nbsp; &nbsp; ctx.drawImage(bg,0,0);<br>
-&nbsp; <br>
-&nbsp; <br>
-&nbsp; &nbsp; for(var i = 0; i &lt; pipe.length; i++){<br>
-&nbsp; &nbsp; &nbsp; <br>
-&nbsp; &nbsp; &nbsp; &nbsp; constant = pipeNorth.height+gap;<br>
-&nbsp; &nbsp; &nbsp; &nbsp; ctx.drawImage(pipeNorth,pipe[i].x,pipe[i].y);<br>
-&nbsp; &nbsp; &nbsp; &nbsp; ctx.drawImage(pipeSouth,pipe[i].x,pipe[i].y+constant);<br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <br>
-&nbsp; &nbsp; &nbsp; &nbsp; pipe[i].x--;<br>
-&nbsp; &nbsp; &nbsp; <br>
-&nbsp; &nbsp; &nbsp; &nbsp; if( pipe[i].x == 125 ){<br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; pipe.push({<br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; x : cvs.width,<br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; y : Math.floor(Math.random()*pipeNorth.height)-pipeNorth.height<br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; });<br>
-&nbsp; &nbsp; &nbsp; &nbsp; }<br>
-&nbsp; &nbsp; &nbsp; &nbsp; // detect collision<br>
-&nbsp; &nbsp; &nbsp; <br>
-&nbsp; &nbsp; &nbsp; &nbsp; if( bX + bird.width &gt;= pipe[i].x &amp;&amp; bX &lt;= pipe[i].x + pipeNorth.width &amp;&amp; (bY &lt;= pipe[i].y + pipeNorth.height || bY+bird.height &gt;= pipe[i].y+constant) || bY + bird.height &gt;=&nbsp; cvs.height - fg.height){<br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; location.reload(); // reload the page<br>
-&nbsp; &nbsp; &nbsp; &nbsp; }<br>
-&nbsp; &nbsp; &nbsp; <br>
-&nbsp; &nbsp; &nbsp; &nbsp; if(pipe[i].x == 5){<br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; score++;<br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; scor.play();<br>
-&nbsp; &nbsp; &nbsp; &nbsp; }<br>
-&nbsp; &nbsp; &nbsp; <br>
-&nbsp; &nbsp; &nbsp; <br>
-&nbsp; &nbsp; }<br>
-&nbsp; &nbsp; ctx.drawImage(fg,0,cvs.height - fg.height);<br>
-&nbsp; <br>
-&nbsp; &nbsp; ctx.drawImage(bird,bX,bY);<br>
-&nbsp; <br>
-&nbsp; &nbsp; bY += gravity;<br>
-&nbsp; <br>
-&nbsp; &nbsp; ctx.fillStyle = "#000";<br>
-&nbsp; &nbsp; ctx.font = "20px Verdana";<br>
-&nbsp; &nbsp; ctx.fillText("Score : "+score,10,cvs.height-20);<br>
-&nbsp; <br>
-&nbsp; &nbsp; requestAnimationFrame(draw);<br>
-&nbsp; <br>
-}<br>
-draw();
-</code></pre>
+
 
 								<footer>
 									<ul class="actions">
@@ -193,24 +92,24 @@ draw();
 								<section id="sidebar">
 
 									<section>
-										<a href="codehub/thebeautyofjavascript.html" class="image fit"><img src="/codehub/images/javascript.jpeg" alt="" /></a>
-										<h3>The beauty of JavaScript</h3>
-										<p> It’s impossible to be a software developer these days without using JavaScript in some way. JS is the most popular language among developers for the seventh year in a row according to a survey on Stack Overflow. </p>
+										<a href="#" class="image fit"><img src="../images/pic07.jpg" alt="" /></a>
+										<h3>Working on it</h3>
+										<p>Sed tristique purus vitae volutpat commodo suscipit amet sed nibh. Proin a ullamcorper sed blandit. Sed tristique purus vitae volutpat commodo suscipit ullamcorper sed blandit lorem ipsum dolore.</p>
 										<footer>
 											<ul class="actions">
-												<li><a href="codehub/thebeautyofjavascript.html" class="button">Learn More</a></li>
+												<li><a href="#" class="button">Continue</a></li>
 											</ul>
 										</footer>
 									</section>
 									<hr />
 
 									<section>
-										<a href="#" class="image fit"><img src="images/pic07.jpg" alt="" /></a>
+										<a href="#" class="image fit"><img src="../images/pic07.jpg" alt="" /></a>
 										<h3>Working on it</h3>
 										<p>Sed tristique purus vitae volutpat commodo suscipit amet sed nibh. Proin a ullamcorper sed blandit. Sed tristique purus vitae volutpat commodo suscipit ullamcorper sed blandit lorem ipsum dolore.</p>
 										<footer>
 											<ul class="actions">
-												<li><a href="#" class="button">Learn More</a></li>
+												<li><a href="#" class="button">Continue</a></li>
 											</ul>
 										</footer>
 									</section>
@@ -221,6 +120,19 @@ draw();
 					</div>
 				</div>
 			</div>
+
+			<div class="center">
+				<div class="pagination">
+				<a href="Why-Python-is-your-gateway-to-Artificial-Intelligence.html">&laquo;</a>
+				<a href="../code.html">1</a>
+				<a href="the-beauty-of-javascript.html" >2</a>
+				<a href="Why-Python-is-your-gateway-to-Artificial-Intelligence.html">3</a>
+				<a href="#" class="active">4</a>
+				<a href="#">5</a>
+				<a href="#">6</a>
+				<a href="#">&raquo;</a>
+				</div>
+			  </div>
 
 			<!-- Five -->
 			<section id="five" class="wrapper style2 special fade">
@@ -247,11 +159,11 @@ draw();
 					<li><a href="mailto:elmehdimadih@yahoo.com" class="icon solid alt fa-envelope"><span class="label">Email</span></a></li>
 				</ul>
 				<ul> 
-					<img src="images/netflify.jpeg" id="powered" alt="image"> 
-					<img src="images/slack.jpeg" id="powered" alt="image">
-					<img src="images/github.jpeg" id="powered" alt="image">
-					<img src="images/torbrowser.jpeg" id="powered" alt="image">
-					<img src="images/codepen.jpeg" id="powered" alt="image">
+					<img src="../images/netflify.jpeg" id="powered" alt="image"> 
+					<img src="../images/slack.jpeg" id="powered" alt="image">
+					<img src="../images/github.jpeg" id="powered" alt="image">
+					<img src="../images/torbrowser.jpeg" id="powered" alt="image">
+					<img src="../images/codepen.jpeg" id="powered" alt="image">
 				</ul>
 				<ul class="copyright">
 					<li> &copy; <script type="text/javascript">	document.write(new Date().getFullYear());</script> &nbsp; • &nbsp;  TecoHub,  All Rights Reserved</li><li>Design: <a href="https://www.instagram.com/teco.hub/">MADIH EL MEHDI</a></li>
@@ -261,14 +173,14 @@ draw();
 	</div>
 
 	<!-- Scripts -->
-		<script src="assets/js/jquery.min.js"></script>
-		<script src="assets/js/jquery.scrolly.min.js"></script>
-		<script src="assets/js/jquery.dropotron.min.js"></script>
-		<script src="assets/js/jquery.scrollex.min.js"></script>
-		<script src="assets/js/browser.min.js"></script>
-		<script src="assets/js/breakpoints.min.js"></script>
-		<script src="assets/js/util.js"></script>
-		<script src="assets/js/main.js"></script>
+		<script src="../assets/js/jquery.min.js"></script>
+		<script src="../assets/js/jquery.scrolly.min.js"></script>
+		<script src="../assets/js/jquery.dropotron.min.js"></script>
+		<script src="../assets/js/jquery.scrollex.min.js"></script>
+		<script src="../assets/js/browser.min.js"></script>
+		<script src="../assets/js/breakpoints.min.js"></script>
+		<script src="../assets/js/util.js"></script>
+		<script src="../assets/js/main.js"></script>
 
 </body>
 </html>

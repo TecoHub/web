@@ -4795,3 +4795,54 @@ input, select, textarea {
 	font-size: 30px;
 	
   }
+
+
+  .center {
+	text-align: center;
+  }
+  
+  .pagination {
+	display: inline-block;
+  }
+  
+  .pagination a {
+	color: white;
+	float: left;
+	padding: 8px 16px;
+	text-decoration: none;
+	transition: background-color .3s;
+	border: 1px solid #ddd;
+	border-radius: 50%;
+	margin: 0 4px;
+  }
+
+   @media screen and (max-width: 480px) {
+	   .pagination a {
+		padding: 6px 10px;
+	   }
+
+	   .pagination a.active {
+		background-color: #e44c65;
+		color: white;
+		border: 1px solid #e44c65;
+	  }
+   }
+  
+  .pagination a.active {
+	background-color: #e44c65;
+	color: white;
+	border: 1px solid #e44c65;
+  }
+  
+  .pagination a:hover:not(.active) {
+	  background-color: #ddd;
+	  box-shadow: 0 0 10px rgba(255,255,255,1),
+	  0 0 20px rgba(255,255,255,1),
+	  0 0 30px rgba(255,255,255,1),
+	 
+	  0 0 0 45px rgba(255,255,255,0.05),
+	  0 0 0 30px rgba(255,255,255,0.05),
+	  0 0 0 15px rgba(255,255,255,0.05);
+}
+	
+  

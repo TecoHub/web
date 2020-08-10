@@ -2569,6 +2569,10 @@ input, select, textarea {
 			.image.fit img {
 				width: 100%;
 			}
+		.responsive-img {
+			width: 100%;
+			height: auto;
+		}	
 
 /* List */
 
@@ -4844,5 +4848,3 @@ input, select, textarea {
 	  0 0 0 30px rgba(255,255,255,0.05),
 	  0 0 0 15px rgba(255,255,255,0.05);
 }
-	
-  
